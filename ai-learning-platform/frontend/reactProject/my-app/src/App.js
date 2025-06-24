@@ -6,24 +6,18 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 function App() {
-  const [username, setUsername] = useState('');
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername); // טען את שם המשתמש מה-Local Storage
-    }
-  }, []);
   return (
     <Router>
       <div className="app-wrapper">
-        <Header />
-        {username && <p>שלום, {username}!</p>}
+        <Header />       
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
       </div>

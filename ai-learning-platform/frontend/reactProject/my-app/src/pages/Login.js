@@ -1,65 +1,77 @@
+
+
+
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [id, setId] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
-    console.log('handleSubmit called with id:', id);  // בדיקה בקונסול
-    
+  
+    // איפוס המידע הקודם ב-Local Storage
+    localStorage.removeItem('username');
+    localStorage.removeItem('user_id');
+  
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL || 'http://localhost:8000'}/api/users/users/?id=${id}`,
+        `${process.env.REACT_APP_BASE_URL || 'http://localhost:8000'}/api/users/users/`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
         }
-    );
-
-      console.log('Response received:', response); // לוג של התגובה
-
+      );
+  
       const data = await response.json();
-      console.log('Response data:', data); // לוג של נתוני התגובה
-
+      console.log("נתוני התגובה:", data); // לוג נתוני התגובה
+  
       if (!response.ok) {
-        console.error('Login failed:', data.detail); // לוג של שגיאה
+        console.log("לא הצליח!!!");
         throw new Error(data.detail || 'Login failed');
+      } else {
+        console.log("התחברות הצליחה!!!");
       }
-      localStorage.setItem('username', data.username);
-      alert(`התחברת עם id: ${data.id || id}`);
-    
+  
+      
+      const user = data.find(user => user.id === parseInt(id)); 
+      if (user) {
+        localStorage.setItem('username', user.name || 'user'); 
+        localStorage.setItem('user_id', user.id); 
+        console.log("שם משתמש ושיוך ID נשמרו:", user.name, user.id); 
+        navigate('/dashboard');
+      } else {
+        console.error("לא נמצא משתמש עם ה-ID שהוזן"); 
+        setError("לא נמצא משתמש עם ה-ID שהוזן");
+      }
+      
     } catch (err) {
-      console.error('Error occurred:', err.message); // לוג של השגיאה
+      console.error("שגיאה:", err); 
       setError(err.message);
     } finally {
       setLoading(false);
-      console.log('Loading finished'); // לוג לסיום הטעינה
     }
   };
-
+  
   return (
     <div className="login-container">
-      <h2>התחברות עם ID </h2>
+      <h2>התחברות עם ID</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="id">ID:</label>
-          <input
-            type="text"
-            id="id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            required
-            disabled={loading}
-          />
-        </div>
-        
+        <label htmlFor="id">ID:</label>
+        <input
+          type="text"
+          id="id"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          required
+          disabled={loading}
+        />
         {error && <p style={{ color: 'red' }}>{error}</p>}
-
         <button type="submit" disabled={loading}>
           {loading ? 'טוען...' : 'התחבר'}
         </button>
