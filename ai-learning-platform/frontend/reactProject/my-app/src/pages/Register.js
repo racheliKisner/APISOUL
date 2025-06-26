@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/Register.css'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -48,9 +50,10 @@ export default function Register() {
       // בדוק אם המשתמש כבר קיים ב-Local Storage
       const existingUserId = localStorage.getItem('user_id');
       if (existingUserId !== data.id.toString()) {
-        // שמירת הפרטים ב-Local Storage
-        localStorage.setItem('username', data.name); // שמירת שם המשתמש
-        localStorage.setItem('user_id', data.id); // שמירת ה-user_id
+        
+        localStorage.setItem('username', data.name); 
+        localStorage.setItem('user_id', data.id); 
+        localStorage.setItem('is_admin', data.is_admin !== undefined ? data.is_admin : false); 
       } else {
         console.log("המשתמש כבר קיים ב-Local Storage.");
       }
@@ -58,7 +61,7 @@ export default function Register() {
       alert(`User created: ${data.name}`);
       
       // הפנה לדף השיעור
-      window.location.href = '/lessons';
+      navigate('/dashboard');
       
     } catch (err) {
       setError(err.message);

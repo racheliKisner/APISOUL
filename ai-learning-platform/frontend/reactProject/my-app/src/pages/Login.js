@@ -1,27 +1,25 @@
-
-
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Register.css'; 
 
 export default function Login() {
-  const [id, setId] = useState('');
+  const [phone, setPhone] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:8000';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-  
-    // איפוס המידע הקודם ב-Local Storage
+    
     localStorage.removeItem('username');
     localStorage.removeItem('user_id');
   
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL || 'http://localhost:8000'}/api/users/users/`,
+        `${baseURL}/api/users/users/`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
@@ -29,29 +27,24 @@ export default function Login() {
       );
   
       const data = await response.json();
-      console.log("נתוני התגובה:", data); // לוג נתוני התגובה
+      console.log("נתוני התגובה:", data); 
   
       if (!response.ok) {
         console.log("לא הצליח!!!");
         throw new Error(data.detail || 'Login failed');
-      } else {
-        console.log("התחברות הצליחה!!!");
       }
   
-      
-      const user = data.find(user => user.id === parseInt(id)); 
+      const user = data.find(user => user.phone === phone); 
       if (user) {
-        localStorage.setItem('username', user.name || 'user'); 
-        localStorage.setItem('user_id', user.id); 
-        console.log("שם משתמש ושיוך ID נשמרו:", user.name, user.id); 
+        localStorage.setItem('username', user.name); 
+        localStorage.setItem('user_id', user.id);
+        localStorage.setItem('is_admin', user.is_admin);
         navigate('/dashboard');
       } else {
-        console.error("לא נמצא משתמש עם ה-ID שהוזן"); 
-        setError("לא נמצא משתמש עם ה-ID שהוזן");
+        setError("לא נמצא משתמש עם המספר טלפון שהוזן");
       }
       
     } catch (err) {
-      console.error("שגיאה:", err); 
       setError(err.message);
     } finally {
       setLoading(false);
@@ -59,19 +52,19 @@ export default function Login() {
   };
   
   return (
-    <div className="login-container">
-      <h2>התחברות עם ID</h2>
+    <div className="register-container"> {/* שינוי לשימוש במחלקה register-container */}
+      <h3>התחברות עם מספר טלפון</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="id">ID:</label>
+        <label htmlFor="phone">מספר טלפון:</label>
         <input
           type="text"
-          id="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
+          id="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           required
           disabled={loading}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p>{error}</p>} {/* שינוי להציג את השגיאה באותו סגנון */}
         <button type="submit" disabled={loading}>
           {loading ? 'טוען...' : 'התחבר'}
         </button>

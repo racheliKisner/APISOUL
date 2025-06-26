@@ -1,78 +1,103 @@
 /* styles/Login.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #fefcf8; /* רקע קרם בהיר */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2a3a2a; /* ירוק כהה */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  flex: 0 0 auto; /* לא מתכווצים ולא מתרחבים */
+}
+main {
+  flex: 1 0 auto; /* יתפוס את כל השטח ביניהם */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
 .login-container {
-    background-color: #ffffff;
-    max-width: 400px;
-    width: 100%;
-    margin: 80px auto;
-    padding: 32px 40px;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #2a3a2a;
-  }
+  background-color: #ffffff;
+  /* max-width: 400px; */
+  max-width: auto;
+  /* width: 100%; */
+  padding: 32px 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+
   
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #4a7c59;
-    font-size: 2rem;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  
-  label {
-    font-weight: 600;
-    color: #557a55;
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-  }
-  
-  input {
-    padding: 10px 12px;
-    margin-top: 6px;
-    border: 1.8px solid #a6d8b8;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #88c492;
-    outline: none;
-  }
-  
-  button {
-    padding: 14px 0;
-    background-color: #a6d8b8;
-    color: #26492f;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:disabled {
-    background-color: #c8e6cd;
-    cursor: not-allowed;
-  }
-  
-  button:hover:not(:disabled) {
-    background-color: #88c492;
-    color: #1f3a24;
-  }
-  
-  .error {
-    color: #d9534f;
-    text-align: center;
-    font-weight: bold;
-  }
-  
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #4a7c59;
+  font-size: 2rem;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+label {
+  font-weight: 600;
+  color: #557a55;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+input {
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1.8px solid #a6d8b8;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #88c492;
+  outline: none;
+}
+
+button {
+  padding: 14px 0;
+  background-color: #a6d8b8;
+  color: #26492f;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #c8e6cd;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #88c492;
+  color: #1f3a24;
+}
+
+.error {
+  color: #d9534f;
+  text-align: center;
+  font-weight: bold;
+}

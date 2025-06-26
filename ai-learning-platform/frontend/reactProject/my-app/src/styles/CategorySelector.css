@@ -1,0 +1,43 @@
+.dashboard-layout {
+    display: flex;
+    flex-direction: row-reverse; /* זה הופך את הצדדים */
+    gap: 24px;
+    direction: rtl;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .form-sidebar {
+    width: 280px;
+    background-color: #fff6ee;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(140, 100, 80, 0.1);
+    color: #5e4331;
+    text-align: right;
+  }
+  .sidebar-title {
+    font-size: 1.3rem;
+    color: #8d4f2b;
+    margin-bottom: 16px;
+  }
+  
+  .form-sidebar label {
+    font-weight: 600;
+    margin: 10px 0 6px;
+    display: block;
+    font-size: 1rem;
+  }
+  
+  .form-sidebar select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc0b3;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+  }
+  
