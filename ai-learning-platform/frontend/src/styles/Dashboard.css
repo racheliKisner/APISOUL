@@ -1,0 +1,157 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2a3a2a;
+  background-color: #fefcf8;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 140px);
+  box-sizing: border-box;
+  direction: rtl; /* מימין לשמאל */
+  text-align: right;
+}
+
+.dashboard-header {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #4a7c59;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #7d9d85;
+}
+
+.dashboard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dashboard-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+}
+
+.dashboard-form input,
+.dashboard-form select,
+.dashboard-form textarea {
+  padding: 12px;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-register {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 26px;
+  background: #a6d8b8;
+  color: #3a6a47;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+  background: #88c492;
+  color: #26492f;
+  cursor: pointer;
+}
+
+.response-box {
+  background-color: #f0fff0;
+  padding: 16px;
+  margin-top: 24px;
+  border-radius: 12px;
+  border: 1px solid #c2e5d3;
+  color: #2c5636;
+  box-shadow: 0 2px 6px rgba(60, 145, 104, 0.1);
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.feature {
+  background-color: #ffe9db;
+  flex: 1 1 240px;
+  margin: 6px;
+  padding: 16px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(156, 93, 52, 0.15);
+  text-align: right;
+}
+
+.feature h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.feature p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.feature .spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  color: floralwhite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.dashboard-form {
+  direction: rtl;
+  text-align: right;
+}
+
+.dashboard-form select,
+.dashboard-form textarea {
+  width: 100%;
+  font-size: 1.1rem;
+}
+label {
+  font-weight: 600;
+  color: #557a55;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+select {
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: medium;
+}

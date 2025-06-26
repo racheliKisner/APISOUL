@@ -1,0 +1,83 @@
+.home-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2a3a2a;
+    background-color: #fefcf8;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 140px); /* גובה המסך פחות header+footer משוערים */
+    box-sizing: border-box;
+  }
+  
+  .home-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .home-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #4a7c59;
+  }
+  
+  .home-header p {
+    font-size: 1rem;
+    color: #7d9d85;
+  }
+  
+  .btn-register {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 22px;
+    background: #a6d8b8;
+    color: #3a6a47;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-register:hover {
+    background: #88c492;
+    color: #26492f;
+    cursor: pointer;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    min-height: 100px;
+    background-color: #ffe9db;
+    flex: 1 1 240px;
+    margin: 6px;
+    padding: 16px 14px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(156, 93, 52, 0.15);
+    color: #6b4b3a;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* הוסף זה כדי להניח את הספינר מעל התוכן */
+    align-items: center; /* מרכז את התוכן במרכז */
+    justify-content: center; /* מרכז את התוכן במרכז */
+    text-align: center; /* טקסט במרכז */
+
+  }
+  
+  .feature h2 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+  
+  .feature p {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+  
